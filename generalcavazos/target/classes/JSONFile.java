@@ -8,9 +8,6 @@ public class JSONFile {
 
     // read a json file and return an array
     public static JSONArray readArray(String fileName) {
-        //
-        // read the birthday.json file and iterate over it
-        //
 
         // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();

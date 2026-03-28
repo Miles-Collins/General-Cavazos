@@ -3,14 +3,19 @@ package com.cavazos;
 import java.util.Random;
 import org.json.simple.*;
 
-public class CavazosExample {
+public class App {
 
     public static void main(String[] args) {
-        String fileName
-                = "/Users/jerom/Documents/GitHub/class-java/general-cavazos/undoredo/src/main/java/com/cavazos/commands.json";
+        String fileName = "commands.json";
 
-        // read coammands
+        // read commands from JSON file and read out commands into an array
         JSONArray commandJSONArray = JSONFile.readArray(fileName);
+
+        if (commandJSONArray == null) {
+            System.err.println("Count not load commands from resources: " + fileName);
+            return;
+        }
+
         String[] commandArray = getCommandArray(commandJSONArray);
         System.out.println(commandArray);
 
