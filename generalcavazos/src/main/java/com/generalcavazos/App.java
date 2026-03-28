@@ -1,6 +1,8 @@
 package com.cavazos;
 
+import java.util.Arrays;
 import java.util.Random;
+
 import org.json.simple.*;
 
 public class App {
@@ -16,17 +18,17 @@ public class App {
             return;
         }
 
+        // convert json array to string array
         String[] commandArray = getCommandArray(commandJSONArray);
-        System.out.println(commandArray);
 
-        // print list of all commands
-        System.out.println("----- List of all commands -----");
-        print(commandArray);
+        // output command array to console
+        System.out.println(Arrays.toString(commandArray));
 
-        System.out.println(
-                "----- Issuing 5 random commands from General Cavazos -----"
-        );
-        randomCommand(commandArray, 5);
+        startMenu(commandArray);
+    }
+
+    private static void startMenu(String[] commandArray) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     // randomly issue commands from General Cavazos
@@ -60,4 +62,5 @@ public class App {
         }
         return arr;
     }
+
 }
