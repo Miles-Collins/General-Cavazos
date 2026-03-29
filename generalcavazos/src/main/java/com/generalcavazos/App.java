@@ -42,6 +42,36 @@ public class App {
             System.out.println("4. redo   - Redo last undone command");
             System.out.println("5. quit   - Exit the program");
             System.out.print("\nEnter command: ");
+
+            // convert input to lowercase and trim whitespace
+            String input = scanner.nextLine().trim().toLowerCase();
+
+            // switch statement to handle user input
+            switch (input) {
+                case "list":
+                case "1":
+                    System.out.println("List command selected");
+                    break;
+                case "issue":
+                case "2":
+                    System.out.println("Issue command selected");
+                    break;
+                case "undo":
+                case "3":
+                    System.out.println("Undo command selected");
+                    break;
+                case "redo":
+                case "4":
+                    System.out.println("Redo command selected");
+                    break;
+                case "quit":
+                case "5":
+                    System.out.println("Exiting program...");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid command. Please try again.");
+            }
         }
     }
 
