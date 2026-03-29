@@ -86,6 +86,30 @@ public class App {
         scanner.close();
     }
 
+    public static void issueCommand() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n----- Select a Command to Issue -----");
+        print(commandArray);
+
+        System.out.print("Enter command number (0-" + (commandArray.length - 1) + "): ");
+
+        String input = scanner.nextLine().trim();
+
+        try {
+            int index = Integer.parseInt(input);
+            if (index >= 0 && index < commandArray.length) {
+                String command = commandArray[index];
+                commandHistory.push(command);
+                redoStack.clear(); // Clear redo stack when a new command is issued
+                System.out.println("Issued command: " + command);
+            } else {
+                System.out.println("Invalid command number. Please select a number between 0 and " + (commandArray.length - 1) + ".");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+    }
+
     public static void undoCommand() {
         if (commandHistory.isEmpty()) {
             System.out.println("No commands to undo.");
