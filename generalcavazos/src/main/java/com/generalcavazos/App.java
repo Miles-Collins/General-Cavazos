@@ -66,13 +66,16 @@ public class App {
                     break;
                 case "quit":
                 case "5":
-                    System.out.println("Exiting program...");
+                    System.out.println("Quit command selected. Exiting...");
+                    System.out.println("Exiting General Cavazos Commander. Goodbye!");
                     running = false;
                     break;
                 default:
                     System.out.println("Invalid command. Please try again.");
             }
         }
+
+        scanner.close();
     }
 
     // randomly issue commands from General Cavazos
