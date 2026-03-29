@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
-import org.json.simple.*;
+import org.json.simple.JSONArray;
 
 public class App {
 
@@ -45,7 +45,8 @@ public class App {
             System.out.println("2. issue  - Issue a command");
             System.out.println("3. undo   - Undo last command");
             System.out.println("4. redo   - Redo last undone command");
-            System.out.println("5. quit   - Exit the program");
+            System.out.println("5. history   - Display command history");
+            System.out.println("6. quit   - Exit the program");
             System.out.print("\nEnter command: ");
 
             // convert input to lowercase and trim whitespace
@@ -72,8 +73,13 @@ public class App {
                     System.out.println("Redo command selected");
                     redoCommand();
                     break;
-                case "quit":
+                case "history":
                 case "5":
+                    System.out.println("History command selected");
+                    displayCommandHistory();
+                    break;
+                case "quit":
+                case "6":
                     System.out.println("Quit command selected. Exiting...");
                     System.out.println("Exiting General Cavazos Commander. Goodbye!");
                     running = false;
