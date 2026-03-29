@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 import org.json.simple.*;
 
+
 public class App {
 
-    public static void main(String[] args) {
+    public static String[] commandArray;
+
         String fileName = "commands.json";
 
         // read commands from JSON file and read out commands into an array
@@ -20,15 +22,15 @@ public class App {
         }
 
         // convert json array to string array
-        String[] commandArray = getCommandArray(commandJSONArray);
+        commandArray = getCommandArray(commandJSONArray);
 
         // output command array to console
         System.out.println(Arrays.toString(commandArray));
 
-        startMenu(commandArray);
+        startMenu();
     }
 
-    private static void startMenu(String[] commandArray) {
+    private static void startMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -50,7 +52,7 @@ public class App {
             switch (input) {
                 case "list":
                 case "1":
-                    System.out.println("List command selected");
+                    displayAllCommands();
                     break;
                 case "issue":
                 case "2":
@@ -110,4 +112,7 @@ public class App {
         return arr;
     }
 
-}
+    public static void displayAllCommands() {
+        System.out.println("\n----- All Available Commands -----");
+        print(commandArray);
+    }
