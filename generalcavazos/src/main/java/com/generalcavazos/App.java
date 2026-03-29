@@ -85,6 +85,26 @@ public class App {
         scanner.close();
     }
 
+    public static void undoCommand() {
+        if (commandHistory.isEmpty()) {
+            System.out.println("No commands to undo.");
+        } else {
+            String lastCommand = commandHistory.pop();
+            redoStack.push(lastCommand);
+            System.out.println("Undid command: " + lastCommand);
+        }
+    }
+
+    public static void redoCommand() {
+        if (redoStack.isEmpty()) {
+            System.out.println("No commands to redo.");
+        } else {
+            String lastUndoneCommand = redoStack.pop();
+            commandHistory.push(lastUndoneCommand);
+            System.out.println("Redid command: " + lastUndoneCommand);
+        }
+    }
+
     // randomly issue commands from General Cavazos
     public static void randomCommand(String[] commandArray, int numCommand) {
         Random rand = new Random();
