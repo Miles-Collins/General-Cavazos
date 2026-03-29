@@ -136,6 +136,32 @@ public class App {
         }
     }
 
+    public static void displayCommandHistory() {
+        System.out.println("\n----- Command History -----");
+        if (commandHistory.isEmpty()) {
+            System.out.println("No commands have been issued yet.");
+        } else {
+            System.out.println("\n----- Command History -----");
+            for (int i = 0; i < commandHistory.size(); i++) {
+                System.out.printf("%d. %s\n", i, commandHistory.get(i));
+            }
+        }
+
+        System.out.println("\n----- Redo Stack -----");
+        if (redoStack.isEmpty()) {
+            System.out.println("No commands available to redo.");
+        } else {
+            System.out.print("Commands Available to Redo:\n");
+            // Convert redo stack to array for display
+            Object[] redo = redoStack.toArray();
+            for (int i = 0; i < redo.length; i++) {
+                // Print redo commands with numbering starting from 1
+                // Format %d to display the index starting from 1, and %s to display the command
+                System.out.printf("%d. %s\n", i + 1, redo[i]);
+            }
+        }
+    }
+
     // randomly issue commands from General Cavazos
     public static void randomCommand(String[] commandArray, int numCommand) {
         Random rand = new Random();
