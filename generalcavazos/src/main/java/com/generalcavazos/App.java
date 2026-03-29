@@ -2,6 +2,7 @@ package com.cavazos;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 import org.json.simple.*;
 
@@ -28,7 +29,20 @@ public class App {
     }
 
     private static void startMenu(String[] commandArray) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        System.out.println("\n====== General Cavazos Commander ======");
+
+        while (running) {
+            System.out.println("\nOptions:");
+            System.out.println("1. list   - Display all commands");
+            System.out.println("2. issue  - Issue a command");
+            System.out.println("3. undo   - Undo last command");
+            System.out.println("4. redo   - Redo last undone command");
+            System.out.println("5. quit   - Exit the program");
+            System.out.print("\nEnter command: ");
+        }
     }
 
     // randomly issue commands from General Cavazos
