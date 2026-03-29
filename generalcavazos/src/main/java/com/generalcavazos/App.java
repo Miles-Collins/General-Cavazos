@@ -3,6 +3,7 @@ package com.cavazos;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 
 import org.json.simple.*;
 
@@ -10,8 +11,9 @@ import org.json.simple.*;
 public class App {
 
     public static String[] commandArray;
-
-        String fileName = "commands.json";
+    private static Stack<String> commandHistory = new Stack<>();
+    private static Stack<String> redoStack = new Stack<>();
+    String fileName = "commands.json";
 
         // read commands from JSON file and read out commands into an array
         JSONArray commandJSONArray = JSONFile.readArray(fileName);
@@ -57,14 +59,17 @@ public class App {
                 case "issue":
                 case "2":
                     System.out.println("Issue command selected");
+                    issueCommand();
                     break;
                 case "undo":
                 case "3":
                     System.out.println("Undo command selected");
+                    undoCommand();
                     break;
                 case "redo":
                 case "4":
                     System.out.println("Redo command selected");
+                    redoCommand();
                     break;
                 case "quit":
                 case "5":
