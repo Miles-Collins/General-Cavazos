@@ -7,13 +7,14 @@ import java.util.Stack;
 
 import org.json.simple.*;
 
-
 public class App {
 
     public static String[] commandArray;
     private static Stack<String> commandHistory = new Stack<>();
     private static Stack<String> redoStack = new Stack<>();
-    String fileName = "commands.json";
+
+    public static void main(String[] args) {
+        String fileName = "commands.json";
 
         // read commands from JSON file and read out commands into an array
         JSONArray commandJSONArray = JSONFile.readArray(fileName);
