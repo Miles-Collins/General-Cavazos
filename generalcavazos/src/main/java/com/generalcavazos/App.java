@@ -46,7 +46,8 @@ public class App {
             System.out.println("3. undo   - Undo last command");
             System.out.println("4. redo   - Redo last undone command");
             System.out.println("5. history   - Display command history");
-            System.out.println("6. quit   - Exit the program");
+            System.out.println("6. clear   - Clear command history");
+            System.out.println("7. exit    - Exit the program");
             System.out.print("\nEnter command: ");
 
             // convert input to lowercase and trim whitespace
@@ -78,9 +79,15 @@ public class App {
                     System.out.println("History command selected");
                     displayCommandHistory();
                     break;
-                case "quit":
+                case "clear":
                 case "6":
-                    System.out.println("Quit command selected. Exiting...");
+                    System.out.println("Clear command selected. Clearing command history...");
+                    commandHistory.clear();
+                    System.out.println("Command history cleared.");
+                    break;
+                case "exit":
+                case "7":
+                    System.out.println("Exit command selected. Exiting...");
                     System.out.println("Exiting General Cavazos Commander. Goodbye!");
                     running = false;
                     break;
@@ -159,6 +166,19 @@ public class App {
                 // Format %d to display the index starting from 1, and %s to display the command
                 System.out.printf("%d. %s\n", i + 1, redo[i]);
             }
+        }
+    }
+
+    public static void clearCommandHistory() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Are you sure you want to clear the command history? (yes/no): ");
+        String response = scanner.nextLine().trim().toLowerCase();
+        if (response.equals("yes") || response.equals("y")) {
+            commandHistory.clear();
+            redoStack.clear();
+            System.out.println("Command history cleared.");
+        } else {
+            System.out.println("Command history not cleared.");
         }
     }
 
