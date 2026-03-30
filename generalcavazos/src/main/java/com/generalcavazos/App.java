@@ -43,12 +43,13 @@ public class App {
             System.out.println("\nOptions:");
             System.out.println("1. list   - Display all commands");
             System.out.println("2. issue  - Issue a command");
-            System.out.println("3. undo   - Undo last command");
-            System.out.println("4. redo   - Redo last undone command");
-            System.out.println("5. history   - Display command history");
-            System.out.println("6. clear   - Clear command history");
-            System.out.println("7. help   - Show help information");
-            System.out.println("8. exit    - Exit the program");
+            System.out.println("3. random  - Issue a random command");
+            System.out.println("4. undo   - Undo last command");
+            System.out.println("5. redo   - Redo last undone command");
+            System.out.println("6. history   - Display command history");
+            System.out.println("7. clear   - Clear command history");
+            System.out.println("8. help   - Show help information");
+            System.out.println("9. exit    - Exit the program");
             System.out.print("\nEnter command: ");
 
             // convert input to lowercase and trim whitespace
@@ -65,33 +66,38 @@ public class App {
                     System.out.println("Issue command selected");
                     issueCommand();
                     break;
-                case "undo":
+                case "random":
                 case "3":
+                    System.out.println("Random command selected");
+                    issueRandomCommand();
+                    break;
+                case "undo":
+                case "4":
                     System.out.println("Undo command selected");
                     undoCommand();
                     break;
                 case "redo":
-                case "4":
+                case "5":
                     System.out.println("Redo command selected");
                     redoCommand();
                     break;
                 case "history":
-                case "5":
+                case "6":
                     System.out.println("History command selected");
                     displayCommandHistory();
                     break;
                 case "clear":
-                case "6":
+                case "7":
                     System.out.println("Clear command selected. Clearing command history...");
                     commandHistory.clear();
                     System.out.println("Command history cleared.");
                     break;
                 case "help":
-                case "7":
+                case "8":
                     generalCavazosHelp();
                     break;
                 case "exit":
-                case "8":
+                case "9":
                     System.out.println("Exit command selected. Exiting...");
                     System.out.println("Exiting General Cavazos Commander. Goodbye!");
                     running = false;
@@ -188,14 +194,13 @@ public class App {
     }
 
     // randomly issue commands from General Cavazos
-    public static void randomCommand(String[] commandArray, int numCommand) {
-        Random rand = new Random();
-        System.out.printf("Number\tCommand\n");
-        System.out.printf("------\t---------------\n");
-        for (int i = 0; i < numCommand; i++) {
-            int randIndex = rand.nextInt(commandArray.length);
-            System.out.printf("%04d\t%s\n", i, commandArray[randIndex]);
-        }
+    public static void issueRandomCommand() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(commandArray.length);
+        String command = commandArray[randomIndex];
+        commandHistory.push(command);
+        redoStack.clear();
+        System.out.println(">> Random command issued: " + command);
     }
 
     // print command array
@@ -230,6 +235,7 @@ public class App {
         System.out.println("\nAvailable Commands:");
         System.out.println("  list   - Displays all available military commands");
         System.out.println("  issue  - Allows you to select and issue a command");
+        System.out.println("  random  - Issues a random command from the list");
         System.out.println("  undo   - Undoes the last issued command");
         System.out.println("  redo   - Redoes the last undone command");
         System.out.println("  history - Shows the command history and redo stack");
