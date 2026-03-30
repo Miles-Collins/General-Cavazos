@@ -1,4 +1,4 @@
-package com.cavazos;
+package com.generalcavazos;
 
 import java.util.Arrays;
 import java.util.Random;
